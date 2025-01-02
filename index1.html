@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Namoro</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec; /* Fundo rosado suave */
+            margin: 0;
+        }
+
+        /* Estilo do contêiner central */
+        .content {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f06292; /* Borda rosa */
+        }
+
+        /* Estilo do título */
+        h1 {
+            color: #f06292; /* Rosa mais forte para o título */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo da pergunta */
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* Estilo comum aos botões */
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Transições suaves */
+            margin: 10px;
+        }
+
+        /* Botão "Sim, aceito!" */
+        .btn-yes {
+            background-color: #f06292; /* Rosa para o botão de aceitação */
+        }
+
+        /* Botão "Não aceito" */
+        .btn-no {
+            background-color: #f44336; /* Vermelho para o botão de recusa */
+        }
+
+        /* Estilo ao passar o mouse sobre os botões */
+        .btn:hover {
+            opacity: 0.8; /* Efeito de opacidade */
+        }
+
+        /* Estilo para evitar que os botões mudem de posição ao clicar */
+        .btn:active {
+            transform: none; /* Desativa a mudança de posição ao clicar */
+        }
+
+        /* Transição suave para o movimento do botão "Não aceito" */
+        .moving {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h1>Pedido de Namoro</h1>
+    <p>Quer namorar comigo?</p>
+    <div>
+        <!-- Botão Sim, aceito! -->
+        <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ" target="_blank">
+            <button class="btn btn-yes">Sim, aceito!</button>
+        </a>
+        <!-- Botão Não aceito -->
+        <button class="btn btn-no" id="btnNo" onclick="alert('Que pena! 😢')">Não aceito</button>
+    </div>
+</div>
+
+<script>
+    // Função para fazer o botão "Não aceito" fugir ao passar o mouse
+    let btnNo = document.getElementById('btnNo');
+    let isMoved = false; // Variável para controlar se o botão já foi movido
+
+    btnNo.addEventListener('mouseenter', function() {
+        if (!isMoved) {
+            // Gerar novos valores aleatórios para a posição
+            let randomX = Math.floor(Math.random() * 500) ; // Movimentação aleatória no eixo X
+            let randomY = Math.floor(Math.random() * 500) ; // Movimentação aleatória no eixo Y
+
+            // Aplicar a transformação para mover o botão
+            btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            btnNo.classList.add('moving'); // Adiciona a classe para animação suave
+            isMoved = true; // Marca que o botão foi movido
+        }
+    });
+
+    // Função para resetar o movimento quando o mouse sair
+    btnNo.addEventListener('mouseleave', function() {
+        isMoved = false; // Permite que o botão se mova novamente ao passar o mouse
+    });
+</script>
+
+</body>
+</html>
